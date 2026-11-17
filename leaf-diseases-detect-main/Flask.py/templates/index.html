@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Feedback System</h2>
+
+    <form method="POST">
+        <label>Select Area:</label>
+        <select name="place" required>
+            <option value="Library">Library 📚</option>
+            <option value="Canteen">Canteen 🍽️</option>
+            <option value="Classroom">Classroom 🏫</option>
+        </select>
+
+        <label>Give Your Review:</label>
+
+        <div class="ratings">
+            <label>
+                <input type="radio" name="rating" value="Excellent 😍" required>
+                Excellent 😍
+            </label>
+            <label>
+                <input type="radio" name="rating" value="Good 🙂">
+                Good 🙂
+            </label>
+            <label>
+                <input type="radio" name="rating" value="Bad 😞">
+                Bad 😞
+            </label>
+        </div>
+
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    {% if feedback %}
+    <div class="result">
+        <h3>Feedback Submitted ✅</h3>
+        <p><b>Area:</b> {{ feedback.place }}</p>
+        <p><b>Review:</b> {{ feedback.rating }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
